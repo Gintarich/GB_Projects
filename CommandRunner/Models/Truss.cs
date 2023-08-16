@@ -1,14 +1,14 @@
 ﻿
 using g3;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CommandRunner.Models
 {
     public class Truss
     {
-        private List<Node> _nodes = new List<Node>();
-        private List<Member> _members = new List<Member>();
         private List<Vector3f> _points = new List<Vector3f>();
         private Frame3f _coordinateSystem;
         public Truss(Vector3f startPoint, Vector3f endPoint, 
@@ -25,8 +25,25 @@ namespace CommandRunner.Models
             Vector3f splitForwardVec = forwardVec / splits;
             Vector3f splitBackwardVec = backwardVec / splits;
 
-            
+            _points.Add(startPoint);
+            for (int i = 0; i < splits; i++)
+            {
+                var last = _points.Last();
+                _points.Add(last + splitForwardVec);
+            }
+            _points.Add(endPoint);
+            for (int i = 0; i < splits; i++)
+            {
+                var last = _points.Last();
+                _points.Add(last + splitBackwardVec);
+            }
 
+            var loverPoints = new List<Vector3f>();
+            foreach (var p in _points)
+            {
+                loverPoints.Add(new Vector3f(p.x,p.y,-height));
+            }
+            _points.AddRange(loverPoints);
         }
     }
 }
