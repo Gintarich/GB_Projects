@@ -48,12 +48,15 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\CreateTrussCommand.cs" />
     <Compile Include="Commands\HelloWorldCommand.cs" />
     <Compile Include="Commands\IGBCommand.cs" />
     <Compile Include="Commands\ReadKeyCommand.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\Truss.cs" />
+    <Compile Include="Models\TrussFactory.cs" />
+    <Compile Include="Models\TrussOld.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
