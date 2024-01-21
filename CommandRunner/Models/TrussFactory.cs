@@ -9,7 +9,7 @@ namespace CommandRunner.Models
 {
     public static class TrussFactory
     {
-        public static Truss GetSimpleTruss(Vector3d startPoint, Vector3d endPoint,
+        public static TrussGeometry GetSimpleTruss(Vector3d startPoint, Vector3d endPoint,
             double angle, double depth, double sections)
         {
             var points = new List<Vector3d>();
@@ -64,7 +64,7 @@ namespace CommandRunner.Models
                 points.Add(nextPoint);
             }
 
-            return new Truss(points);
+            return new TrussGeometry(points);
         }
     }
 }

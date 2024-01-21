@@ -54,7 +54,7 @@
     <Compile Include="Commands\ReadKeyCommand.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Node.cs" />
-    <Compile Include="Models\Truss.cs" />
+    <Compile Include="Models\TrussGeometry.cs" />
     <Compile Include="Models\TrussFactory.cs" />
     <Compile Include="Models\TrussOld.cs" />
     <Compile Include="Program.cs" />

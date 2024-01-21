@@ -7,18 +7,23 @@ using System.Threading.Tasks;
 
 namespace CommandRunner.Models
 {
-    public class Truss
+    public class TrussGeometry
     {
         private List<Vector3d> _points;
         private List<Member> _topChords = new List<Member>();
         private List<Member> _bottomChords = new List<Member>();
         private List<Member> _diagnals = new List<Member>();
-        public Truss(List<Vector3d> points)
+        private Frame3f _frame;
+        public TrussGeometry(List<Vector3d> points)
         {
-            _points = points;
-        }
-        public Truss(Vector3d startPoint, Vector3d endPoint, double angle, double depth)
-        {
+            var pts = points.OrderBy(p => p.x).ThenBy(p => p.y).ToList();
+            Vector3f basePt = new Vector3f(pts[0]);
+            Vector3f x = new Vector3f(pts.LastOrDefault() - basePt).Normalized;
+            Vector3f y = new Vector3f(x.Cross(Vector3f.AxisZ)).Normalized;
+            Vector3f z = Vector3f.AxisZ;
+            _frame = new Frame3f(basePt);
+            var mat = new Matrix3d(x,y,z,false);
+            _points = pts.Select(p=>new Vector3d(mat.Multiply(ref p))).ToList();
 
         }
         public List<Member> GetTopChords()
