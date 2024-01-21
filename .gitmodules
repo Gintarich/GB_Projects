@@ -1,0 +1,3 @@
+[submodule "geometry4Sharp"]
+	path = geometry4Sharp
+	url = https://github.com/Gintarich/geometry4Sharp
