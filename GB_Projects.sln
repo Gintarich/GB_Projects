@@ -5,6 +5,10 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandRunner", "CommandRunner\CommandRunner.csproj", "{AE06B731-2B55-4B6E-A2E1-BECA8F5B256D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geometry4Sharp", "..\geometry4Sharp\geometry4Sharp.csproj", "{ECE4866B-A132-4B9C-A986-B1E0CA49227C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBCore", "GBCore\GBCore.csproj", "{A1E39B6E-C510-4420-A455-60D39D21306F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AE06B731-2B55-4B6E-A2E1-BECA8F5B256D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE06B731-2B55-4B6E-A2E1-BECA8F5B256D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE06B731-2B55-4B6E-A2E1-BECA8F5B256D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE4866B-A132-4B9C-A986-B1E0CA49227C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE4866B-A132-4B9C-A986-B1E0CA49227C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE4866B-A132-4B9C-A986-B1E0CA49227C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE4866B-A132-4B9C-A986-B1E0CA49227C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E39B6E-C510-4420-A455-60D39D21306F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E39B6E-C510-4420-A455-60D39D21306F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E39B6E-C510-4420-A455-60D39D21306F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E39B6E-C510-4420-A455-60D39D21306F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,9 +19,15 @@ namespace CommandRunner.Models
             var pts = points.OrderBy(p => p.x).ThenBy(p => p.y).ToList();
             Vector3f basePt = new Vector3f(pts[0]);
             Vector3f x = new Vector3f(pts.LastOrDefault() - basePt).Normalized;
+            /*
+            _frame = new Frame3f(basePt);
+            var mat = new Matrix3d(x,y,z,false);
+            _points = pts.Select(p=>new Vector3d(mat.Multiply(ref p))).ToList();
+            */
             _frame = new Frame3f(basePt);
             _frame.AlignAxis(0, x);
             pts.Select(p => _frame.ToFrameP(new Vector3f(p)));
+
         }
         public List<Member> GetTopChords()
         {

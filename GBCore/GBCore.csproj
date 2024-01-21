@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE06B731-2B55-4B6E-A2E1-BECA8F5B256D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CommandRunner</RootNamespace>
-    <AssemblyName>CommandRunner</AssemblyName>
+    <ProjectGuid>{A1E39B6E-C510-4420-A455-60D39D21306F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GBCore</RootNamespace>
+    <AssemblyName>GBCore</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,23 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
-    <Compile Include="Commands\CommandFactory.cs" />
-    <Compile Include="Commands\CreateTrussCommand.cs" />
-    <Compile Include="Commands\HelloWorldCommand.cs" />
-    <Compile Include="Commands\IGBCommand.cs" />
-    <Compile Include="Commands\ReadKeyCommand.cs" />
-    <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\Node.cs" />
-    <Compile Include="Models\TrussGeometry.cs" />
-    <Compile Include="Models\TrussFactory.cs" />
-    <Compile Include="Models\TrussOld.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="Truss\Member.cs" />
+    <Compile Include="Truss\Node.cs" />
+    <Compile Include="Truss\TrussFactory.cs" />
+    <Compile Include="Truss\TrussGeometry.cs" />
+    <Compile Include="Truss\TrussOld.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\geometry4Sharp\geometry4Sharp.csproj">
