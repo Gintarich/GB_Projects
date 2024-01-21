@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Truss\Member.cs" />
     <Compile Include="Truss\Node.cs" />
     <Compile Include="Truss\TrussFactory.cs" />
     <Compile Include="Truss\TrussGeometry.cs" />
     <Compile Include="Truss\TrussOld.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\geometry4Sharp\geometry4Sharp.csproj">
+      <Project>{ece4866b-a132-4b9c-a986-b1e0ca49227c}</Project>
+      <Name>geometry4Sharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -61,6 +61,10 @@
       <Project>{a1e39b6e-c510-4420-a455-60d39d21306f}</Project>
       <Name>GBCore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\geometry4Sharp\geometry4Sharp.csproj">
+      <Project>{ece4866b-a132-4b9c-a986-b1e0ca49227c}</Project>
+      <Name>geometry4Sharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

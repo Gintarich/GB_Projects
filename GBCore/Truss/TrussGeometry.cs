@@ -16,9 +16,9 @@ namespace GBCore
         private Frame3f _frame;
         public TrussGeometry(List<Vector3d> points)
         {
-            var pts = points.OrderBy(p => p.x).ThenBy(p => p.y).ToList();
-            Vector3f basePt = new Vector3f(pts[0]);
-            Vector3f x = new Vector3f(pts.LastOrDefault() - basePt).Normalized;
+            _points = points.OrderBy(p => p.x).ThenBy(p => p.y).ToList();
+            Vector3f basePt = new Vector3f(_points[0]);
+            Vector3f x = new Vector3f(_points.LastOrDefault() - basePt).Normalized;
             /*
             _frame = new Frame3f(basePt);
             var mat = new Matrix3d(x,y,z,false);
@@ -26,8 +26,8 @@ namespace GBCore
             */
             _frame = new Frame3f(basePt);
             _frame.AlignAxis(0, x);
-            pts.Select(p => _frame.ToFrameP(new Vector3f(p)));
-
+            _points = _points.Select(p => _frame.ToFrameP(new Vector3d(p))).
+                Select(p=>Vector3d.Round(p,2)).ToList();
         }
         public List<Member> GetTopChords()
         {

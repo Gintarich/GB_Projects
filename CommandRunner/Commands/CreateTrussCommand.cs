@@ -17,7 +17,8 @@ namespace CommandRunner.Commands
             // 9.4623 angle
             var truss = TrussFactory.GetSimpleTruss(
                 new Vector3d(0, 0, 0), 
-                new Vector3d(v.x, v.y, 0), 
+                //new Vector3d(v.x, v.y, 0),
+                new Vector3d(0, 24, 0),
                 9.4623, 3, 2
                 );
 
