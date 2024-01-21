@@ -5,7 +5,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CommandRunner.Models
+namespace GBCore
 {
     public class TrussOld
     {

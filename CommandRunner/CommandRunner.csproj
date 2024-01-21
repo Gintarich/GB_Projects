@@ -49,11 +49,6 @@
     <Compile Include="Commands\HelloWorldCommand.cs" />
     <Compile Include="Commands\IGBCommand.cs" />
     <Compile Include="Commands\ReadKeyCommand.cs" />
-    <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\Node.cs" />
-    <Compile Include="Models\TrussGeometry.cs" />
-    <Compile Include="Models\TrussFactory.cs" />
-    <Compile Include="Models\TrussOld.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\geometry4Sharp\geometry4Sharp.csproj">
-      <Project>{ece4866b-a132-4b9c-a986-b1e0ca49227c}</Project>
-      <Name>geometry4Sharp</Name>
+    <ProjectReference Include="..\GBCore\GBCore.csproj">
+      <Project>{a1e39b6e-c510-4420-a455-60d39d21306f}</Project>
+      <Name>GBCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
