@@ -46,6 +46,7 @@
     <Compile Include="Truss\Node.cs" />
     <Compile Include="Truss\TrussFactory.cs" />
     <Compile Include="Truss\TrussGeometry.cs" />
+    <Compile Include="Truss\TrussGeometrySettings.cs" />
     <Compile Include="Truss\TrussOld.cs" />
   </ItemGroup>
   <ItemGroup>
