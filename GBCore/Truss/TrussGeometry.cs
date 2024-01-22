@@ -11,16 +11,10 @@ namespace GBCore
     {
         private List<Vector3d> _points;
         private Frame3f _frame;
-        public TrussGeometry(List<Vector3d> points)
+        public TrussGeometry(List<Vector3d> points,Frame3f frame)
         {
-            _points = points.OrderBy(p => p.x).ThenBy(p => p.y).ToList();
-            Vector3f basePt = new Vector3f(_points[0]);
-            Vector3f x = new Vector3f(_points.LastOrDefault() - basePt).Normalized;
-            _frame = new Frame3f(basePt);
-            _frame.AlignAxis(0, x);
-            _points = _points.Select(p => _frame.ToFrameP(new Vector3d(p)))
-                .Select(p => Vector3d.Round(p, 2))
-                .ToList();
+            _points = points.OrderBy(p => p.x).ToList();
+            _frame = frame;
         }
         public List<Member> GetTopChords()
         {

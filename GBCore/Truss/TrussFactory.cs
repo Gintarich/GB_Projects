@@ -13,30 +13,43 @@ namespace GBCore
         public static TrussGeometry GetSimpleTruss(TrussGeometrySettings settings)
         {
             var points = new List<Vector3d>();
-            double span = (settings.StartPoint - settings.EndPoint).Length;
+            Vector3f x = new Vector3f(settings.EndPoint - settings.StartPoint).Normalized;
+            var frame = new Frame3f(settings.StartPoint);
+            frame.AlignAxis(0, x);
 
-            double slopeHeight = span / 2 * Math.Tan(settings.Angle * Math.PI / 180);
+            var localSP = frame.ToFrameP(settings.StartPoint);
+            var localEP = frame.ToFrameP(settings.EndPoint);
+            var tang = Math.Tan(settings.Angle * Math.PI / 180);
+            var offsetetZ = settings.FirstDiagonalOffset*tang;
+
+            points.Add(localSP);
+            points.Add(localEP);
+
+            var newStartPoint = new Vector3d(settings.FirstDiagonalOffset,
+                0,offsetetZ);
+
+            var newEndPoint = new Vector3d(localEP.x - settings.FirstDiagonalOffset,
+                0, offsetetZ);
+
+            double slopeHeight = localEP.x / 2 * tang;
             slopeHeight = Math.Round(slopeHeight, 2);
 
-            Vector3d midpoint = new Vector3d(
-                (settings.StartPoint.x + settings.EndPoint.x) / 2,
-                (settings.StartPoint.y + settings.EndPoint.y) / 2,
-                (settings.StartPoint.z + settings.EndPoint.z) / 2 + slopeHeight
-                );
+            Vector3d midpoint = new Vector3d((localEP.x) / 2, 0, slopeHeight );
 
             // Create top chord points in forward direction
-            var forvardSlope = (midpoint - settings.StartPoint) / settings.Sections;
-            points.Add(settings.StartPoint);
-            for (int i = 0; i < settings.Sections - 1; i++)
+            var forvardSlope = (midpoint - newStartPoint) / settings.Sections;
+            var index = points.Count;
+            points.Add(newStartPoint);
+            for (int i = index; i < index + settings.Sections - 1; i++)
             {
                 var nextPoint = points[i] + forvardSlope;
                 points.Add(nextPoint);
             }
 
             // Create top chord points in backward direction
-            var index = points.Count;
-            points.Add(settings.EndPoint);
-            var backvardSlope = (midpoint - settings.EndPoint) / settings.Sections;
+            index = points.Count;
+            points.Add(newEndPoint);
+            var backvardSlope = (midpoint - newEndPoint) / settings.Sections;
             for (int i = index; i < index + settings.Sections - 1; i++)
             {
                 var nextPoint = points[i] + backvardSlope; ;
@@ -50,11 +63,10 @@ namespace GBCore
             if (bottomChordZValue > settings.StartPoint.z)
                 bottomChordZValue = settings.StartPoint.z - 500;
 
-            double bottomChordSPYValue = ((settings.StartPoint + forvardSlope).y - settings.StartPoint.y) / 2;
-            double bottomChordSPXValue = ((settings.StartPoint + forvardSlope).x - settings.StartPoint.x) / 2;
+            double bottomChordSPXValue = ((newStartPoint + forvardSlope).x - newStartPoint.x) / 2;
 
             Vector3d bottomChordSP = new Vector3d(bottomChordSPXValue,
-                bottomChordSPYValue, bottomChordZValue);
+                0, bottomChordZValue);
 
             points.Add(bottomChordSP);
             index = points.Count-1;
@@ -64,7 +76,7 @@ namespace GBCore
                 points.Add(nextPoint);
             }
 
-            return new TrussGeometry(points);
+            return new TrussGeometry(points,frame);
         }
     }
 }
