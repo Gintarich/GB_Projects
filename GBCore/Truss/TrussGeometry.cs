@@ -18,16 +18,19 @@ namespace GBCore
         }
         public List<Member> GetTopChords()
         {
+            //TODO: FIX THESE
             var indicies = _points.Select((point, i) => new { i, point })
-                .Where(el => el.point.z >= _points[0].z)
-                .Select(el => el.i);
+                .Where(el => (el.point.z >= _points[0].z )&&(el.i != 0)&&(el.i != _points.Count-1) )
+                .Select(el=>el.i);
             var next = indicies.Skip(1);
 
             return indicies.Zip(next, (first, second) => new Member(first, second)).ToList();
         }
         public List<Member> GetDiagnals()
         {
+            //TODO: FIX THESE
             var indicies = _points.Select((point, i) => new { i, point })
+                .Where( el => (el.i != 0) && (el.i != _points.Count - 1))
                 .Select(el => el.i);
             var next = indicies.Skip(1);
 
@@ -35,8 +38,9 @@ namespace GBCore
         }
         public List<Member> GetBottomChords()
         {
+            //TODO: FIX THESE
             var indicies = _points.Select((point, i) => new { i, point })
-                .Where(el => el.point.z < _points[0].z)
+                .Where(el => (el.point.z < _points[0].z) && (el.i != 0) && (el.i != _points.Count - 1))
                 .Select(el => el.i);
             var next = indicies.Skip(1);
 
