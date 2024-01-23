@@ -20,13 +20,13 @@ namespace GBCore
             var localSP = frame.ToFrameP(settings.StartPoint);
             var localEP = frame.ToFrameP(settings.EndPoint);
             var tang = Math.Tan(settings.Angle * Math.PI / 180);
-            var offsetetZ = settings.FirstDiagonalOffset*tang;
+            var offsetetZ = settings.FirstDiagonalOffset * tang;
 
             points.Add(localSP);
             points.Add(localEP);
 
             var newStartPoint = new Vector3d(settings.FirstDiagonalOffset,
-                0,offsetetZ);
+                0, offsetetZ);
 
             var newEndPoint = new Vector3d(localEP.x - settings.FirstDiagonalOffset,
                 0, offsetetZ);
@@ -34,7 +34,7 @@ namespace GBCore
             double slopeHeight = localEP.x / 2 * tang;
             slopeHeight = Math.Round(slopeHeight, 2);
 
-            Vector3d midpoint = new Vector3d((localEP.x) / 2, 0, slopeHeight );
+            Vector3d midpoint = new Vector3d((localEP.x) / 2, 0, slopeHeight);
 
             // Create top chord points in forward direction
             var forvardSlope = (midpoint - newStartPoint) / settings.Sections;
@@ -69,14 +69,29 @@ namespace GBCore
                 0, bottomChordZValue);
 
             points.Add(bottomChordSP);
-            index = points.Count-1;
+            index = points.Count - 1;
             for (int i = index; i < index + settings.Sections + 1; i++)
             {
                 var nextPoint = points[i] + new Vector3d(forvardSlope.x, forvardSlope.y, 0);
                 points.Add(nextPoint);
             }
 
-            return new TrussGeometry(points,frame);
+            return new TrussGeometry(points, frame);
+        }
+
+        public static TrussGeometry GenerateTrussForRhino(double[] startPoint, double[] endPoint, 
+            double angle, double height, int sections, double firstDiagonalOffset)
+        {
+            TrussGeometrySettings settings = new TrussGeometrySettings
+            {
+                StartPoint = new Vector3d(startPoint[0], startPoint[1], startPoint[2]),
+                EndPoint = new Vector3d(endPoint[0], endPoint[1], endPoint[2]),
+                Angle = angle,
+                Height = height,
+                Sections = sections,
+                FirstDiagonalOffset = firstDiagonalOffset
+            };
+            return GetSimpleTruss(settings);
         }
     }
 }

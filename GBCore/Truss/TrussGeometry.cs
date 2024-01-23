@@ -11,7 +11,7 @@ namespace GBCore
     {
         private List<Vector3d> _points;
         private Frame3f _frame;
-        public TrussGeometry(List<Vector3d> points,Frame3f frame)
+        public TrussGeometry(List<Vector3d> points, Frame3f frame)
         {
             _points = points.OrderBy(p => p.x).ToList();
             _frame = frame;
@@ -20,10 +20,10 @@ namespace GBCore
         {
             var indicies = _points.Select((point, i) => new { i, point })
                 .Where(el => el.point.z >= _points[0].z)
-                .Select(el=>el.i);
+                .Select(el => el.i);
             var next = indicies.Skip(1);
 
-            return indicies.Zip(next,(first,second)=> new Member(first,second)).ToList();
+            return indicies.Zip(next, (first, second) => new Member(first, second)).ToList();
         }
         public List<Member> GetDiagnals()
         {
@@ -41,6 +41,21 @@ namespace GBCore
             var next = indicies.Skip(1);
 
             return indicies.Zip(next, (first, second) => new Member(first, second)).ToList();
+        }
+
+        public List<(double[], double[])> GetTopChordPoints()
+        {
+            var indicies = _points.Select((point, i) => new { i, point })
+                .Where(el => el.point.z >= _points[0].z)
+                .Select(el => el.i);
+            var next = indicies.Skip(1);
+
+            var transformed = _points.Select(p => _frame.FromFrameP(p)).ToList();
+
+            return indicies.Zip(next, (first, second) =>
+            (new double[] { transformed[first].x, transformed[first].y, transformed[first].z },
+            new double[] { transformed[second].x, transformed[second].y, transformed[second].z }))
+                .ToList();
         }
 
     }
