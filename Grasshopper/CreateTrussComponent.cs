@@ -81,15 +81,36 @@ namespace Grasshopper
                 new double[] {endPoint.X,endPoint.Y,endPoint.Z },
                 angle,height,sections,firstDiagonalOffset);
 
-            var points = truss.GetTopChordPoints();
+            var topChords = truss.GetTopChordPoints();
             List<Line> lines = new List<Line>();
-            foreach (var p in points)
+            foreach (var p in topChords)
             {
                 Point3d p1 = p.Item1.GetRhinoPoint();
                 Point3d p2 = p.Item2.GetRhinoPoint();
                 lines.Add(new Line(p.Item1.GetRhinoPoint(), p.Item2.GetRhinoPoint()));
             }
+            
+            var diagonals = truss.GetDiagonalPoints();
+            List<Line> diagonalLines = new List<Line>();
+            foreach(var p in diagonals)
+            {
+                Point3d p1 = p.Item1.GetRhinoPoint();
+                Point3d p2 = p.Item2.GetRhinoPoint();
+                diagonalLines.Add(new Line(p.Item1.GetRhinoPoint(), p.Item2.GetRhinoPoint()));
+            }
+            
+            var bottomChords = truss.GetBottomChordPoints();
+            List<Line> bottomChordLines = new List<Line>();
+            foreach (var p in bottomChords)
+            {
+                Point3d p1 = p.Item1.GetRhinoPoint();
+                Point3d p2 = p.Item2.GetRhinoPoint();
+                bottomChordLines.Add(new Line(p.Item1.GetRhinoPoint(), p.Item2.GetRhinoPoint()));
+            }
+
             DA.SetDataList(0, lines);
+            DA.SetDataList(1, diagonalLines);
+            DA.SetDataList(2, bottomChordLines);
         }
 
         /// <summary>

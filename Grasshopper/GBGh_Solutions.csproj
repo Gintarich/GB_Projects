@@ -7,6 +7,10 @@
     <Description>Description of Grasshopper</Description>
     <TargetExt>.gha</TargetExt>
   </PropertyGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\GBCore\GBCore.csproj" />
+  </ItemGroup>
   
   <ItemGroup>
     <Reference Include="GBCore">

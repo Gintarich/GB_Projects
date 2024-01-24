@@ -18,7 +18,6 @@ namespace GBCore
         }
         public List<Member> GetTopChords()
         {
-            //TODO: FIX THESE
             var indicies = _points.Select((point, i) => new { i, point })
                 .Where(el => (el.point.z >= _points[0].z )&&(el.i != 0)&&(el.i != _points.Count-1) )
                 .Select(el=>el.i);
@@ -28,7 +27,6 @@ namespace GBCore
         }
         public List<Member> GetDiagnals()
         {
-            //TODO: FIX THESE
             var indicies = _points.Select((point, i) => new { i, point })
                 .Where( el => (el.i != 0) && (el.i != _points.Count - 1))
                 .Select(el => el.i);
@@ -38,7 +36,6 @@ namespace GBCore
         }
         public List<Member> GetBottomChords()
         {
-            //TODO: FIX THESE
             var indicies = _points.Select((point, i) => new { i, point })
                 .Where(el => (el.point.z < _points[0].z) && (el.i != 0) && (el.i != _points.Count - 1))
                 .Select(el => el.i);
@@ -57,8 +54,36 @@ namespace GBCore
             var transformed = _points.Select(p => _frame.FromFrameP(p)).ToList();
 
             return indicies.Zip(next, (first, second) =>
-            (new double[] { transformed[first].x, transformed[first].y, transformed[first].z },
-            new double[] { transformed[second].x, transformed[second].y, transformed[second].z }))
+            (new double[] {transformed[first].x.Round(4), transformed[first].y.Round(4), transformed[first].z.Round(4) },
+            new double[] {transformed[second].x.Round(4), transformed[second].y.Round(4), transformed[second].z.Round(4) }))
+                .ToList();
+        }
+        public List<(double[], double[])> GetDiagonalPoints()
+        {
+            var indicies = _points.Select((point, i) => new { i, point })
+                .Where(el => (el.i != 0) && (el.i != _points.Count - 1))
+                .Select(el => el.i);
+            var next = indicies.Skip(1);
+
+            var transformed = _points.Select(p => _frame.FromFrameP(p)).ToList();
+
+            return indicies.Zip(next, (first, second) =>
+            (new double[] {transformed[first].x.Round(4), transformed[first].y.Round(4), transformed[first].z.Round(4) },
+            new double[] {transformed[second].x.Round(4), transformed[second].y.Round(4), transformed[second].z.Round(4) }))
+                .ToList();
+        }
+        public List<(double[], double[])> GetBottomChordPoints()
+        {
+            var indicies = _points.Select((point, i) => new { i, point })
+                .Where(el => (el.point.z < _points[0].z) && (el.i != 0) && (el.i != _points.Count - 1))
+                .Select(el => el.i).ToList();
+            var next = indicies.Skip(1).ToList();
+
+            var transformed = _points.Select(p => _frame.FromFrameP(p)).ToList();
+
+            return indicies.Zip(next, (first, second) =>
+            (new double[] { transformed[first].x.Round(4), transformed[first].y.Round(4), transformed[first].z.Round(4) },
+            new double[] { transformed[second].x.Round(4), transformed[second].y.Round(4), transformed[second].z.Round(4) }))
                 .ToList();
         }
 

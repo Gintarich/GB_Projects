@@ -18,7 +18,9 @@ namespace GBCore
             frame.AlignAxis(0, x);
 
             var localSP = frame.ToFrameP(settings.StartPoint);
+            localSP.Round(2);
             var localEP = frame.ToFrameP(settings.EndPoint);
+            localEP.Round(2);
             var tang = Math.Tan(settings.Angle * Math.PI / 180);
             var offsetetZ = settings.FirstDiagonalOffset * tang;
 
@@ -60,17 +62,17 @@ namespace GBCore
             // create bottom points
             double bottomChordZValue = midpoint.z - settings.Height;
             // Truss height has to be larger than 500
-            if (bottomChordZValue > settings.StartPoint.z)
-                bottomChordZValue = settings.StartPoint.z - 500;
+            if (bottomChordZValue > localSP.z - 500)
+                bottomChordZValue = localSP.z - 500;
 
-            double bottomChordSPXValue = ((newStartPoint + forvardSlope).x - newStartPoint.x) / 2;
+            double bottomChordSPXValue = forvardSlope.x / 2 + settings.FirstDiagonalOffset;
 
             Vector3d bottomChordSP = new Vector3d(bottomChordSPXValue,
                 0, bottomChordZValue);
 
             points.Add(bottomChordSP);
             index = points.Count - 1;
-            for (int i = index; i < index + settings.Sections + 1; i++)
+            for (int i = index; i < index + settings.Sections + settings.Sections - 1; i++)
             {
                 var nextPoint = points[i] + new Vector3d(forvardSlope.x, forvardSlope.y, 0);
                 points.Add(nextPoint);
@@ -79,7 +81,7 @@ namespace GBCore
             return new TrussGeometry(points, frame);
         }
 
-        public static TrussGeometry GenerateTrussForRhino(double[] startPoint, double[] endPoint, 
+        public static TrussGeometry GenerateTrussForRhino(double[] startPoint, double[] endPoint,
             double angle, double height, int sections, double firstDiagonalOffset)
         {
             TrussGeometrySettings settings = new TrussGeometrySettings

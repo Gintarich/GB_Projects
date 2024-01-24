@@ -48,6 +48,7 @@
     <Compile Include="Truss\TrussGeometry.cs" />
     <Compile Include="Truss\TrussGeometrySettings.cs" />
     <Compile Include="Truss\TrussOld.cs" />
+    <Compile Include="Utils\MathUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\geometry4Sharp\geometry4Sharp.csproj">
