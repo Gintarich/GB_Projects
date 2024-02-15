@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace GBCore
+namespace GBCore.Truss
 {
     public class Node
     {
-        private List<Member> _members = new List<Member>();
-        
+        private readonly List<Member> _members = new List<Member>();
     }
 }

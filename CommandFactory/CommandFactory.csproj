@@ -2,7 +2,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GBCore\GBCore.csproj" />
-    <ProjectReference Include="..\geometry4Sharp\geometry4Sharp_netstandard.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="geometry4Sharp">
+      <HintPath>..\GBCore\G4DLL\geometry4Sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <PropertyGroup>

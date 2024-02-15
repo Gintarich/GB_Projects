@@ -4,7 +4,7 @@ namespace CommandRunner
 {
     public class Application
     {
-        private CommandFactoryComponent _commandFactory;
+        private CommandFactoryComponent? _commandFactory;
         public void Run()
         {
             _commandFactory = new CommandFactoryComponent();

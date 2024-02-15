@@ -1,9 +1,8 @@
 ﻿using g4;
-using GBCore.Truss;
 using System;
 using System.Collections.Generic;
 
-namespace GBCore
+namespace GBCore.Truss
 {
     public static class TrussFactory
     {
@@ -33,7 +32,7 @@ namespace GBCore
             double slopeHeight = localEP.x / 2 * tang;
             slopeHeight = Math.Round(slopeHeight, 2);
 
-            Vector3d midpoint = new Vector3d((localEP.x) / 2, 0, slopeHeight);
+            var midpoint = new Vector3d(localEP.x / 2, 0, slopeHeight);
 
             // Create top chord points in forward direction
             var forvardSlope = (midpoint - newStartPoint) / settings.Sections;
@@ -64,7 +63,7 @@ namespace GBCore
 
             double bottomChordSPXValue = forvardSlope.x / 2 + settings.FirstDiagonalOffset;
 
-            Vector3d bottomChordSP = new Vector3d(bottomChordSPXValue,
+            var bottomChordSP = new Vector3d(bottomChordSPXValue,
                 0, bottomChordZValue);
 
             points.Add(bottomChordSP);
@@ -81,7 +80,7 @@ namespace GBCore
         public static TrussGeometry GenerateTrussForRhino(double[] startPoint, double[] endPoint,
             double angle, double height, int sections, double firstDiagonalOffset)
         {
-            TrussGeometrySettings settings = new TrussGeometrySettings
+            var settings = new TrussGeometrySettings
             {
                 StartPoint = new Vector3d(startPoint[0], startPoint[1], startPoint[2]),
                 EndPoint = new Vector3d(endPoint[0], endPoint[1], endPoint[2]),
