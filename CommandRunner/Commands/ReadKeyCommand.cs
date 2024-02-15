@@ -11,7 +11,6 @@ namespace CommandRunner.Commands
         public void Run()
         {
             Console.ReadLine();
-
         }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using g4;
-using System;
 using GBCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using GBCore.Truss;
 

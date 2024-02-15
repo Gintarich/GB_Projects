@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBCore", "GBCore\GBCore.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "geometry4Sharp_netstandard", "geometry4Sharp\geometry4Sharp_netstandard.csproj", "{6515F3DD-55B0-41FE-A4B6-E1EC26496B62}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandRunner", "CommandRunner\CommandRunner.csproj", "{33F1B39A-DFBD-49F3-9EFF-97D634E35FA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6515F3DD-55B0-41FE-A4B6-E1EC26496B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6515F3DD-55B0-41FE-A4B6-E1EC26496B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6515F3DD-55B0-41FE-A4B6-E1EC26496B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F1B39A-DFBD-49F3-9EFF-97D634E35FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F1B39A-DFBD-49F3-9EFF-97D634E35FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F1B39A-DFBD-49F3-9EFF-97D634E35FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F1B39A-DFBD-49F3-9EFF-97D634E35FA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
