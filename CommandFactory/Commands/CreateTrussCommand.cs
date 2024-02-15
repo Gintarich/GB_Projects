@@ -2,8 +2,9 @@
 using GBCore;
 using System.Diagnostics;
 using GBCore.Truss;
+using System;
 
-namespace CommandRunner.Commands
+namespace CommandFactory.Commands
 {
     public class CreateTrussCommand : IGBCommand
     {

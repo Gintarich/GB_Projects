@@ -1,20 +1,15 @@
-﻿using CommandRunner.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace CommandRunner
+namespace CommandFactory.Commands
 {
-    public class CommandFactory
+    public class CommandFactoryComponent 
     {
         private List<IGBCommand> _commands = new List<IGBCommand>();
 
         public void Initialize()
         {
             _commands.Add(new HelloWorldCommand());
-            _commands.Add(new CreateTrussCommand());
+        //    _commands.Add(new CreateTrussCommand());
             _commands.Add(new ReadKeyCommand());
         }
         public void RunCommands()

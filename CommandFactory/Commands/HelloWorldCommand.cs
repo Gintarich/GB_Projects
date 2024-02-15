@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommandRunner.Commands
+namespace CommandFactory.Commands
 {
-    internal class ReadKeyCommand : IGBCommand
+    internal class HelloWorldCommand : IGBCommand
     {
         public void Run()
         {
-            Console.ReadLine();
+            Console.WriteLine("Hello World");
         }
     }
 }

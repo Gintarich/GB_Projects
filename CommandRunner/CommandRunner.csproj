@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\geometry4Sharp\geometry4Sharp_netstandard.csproj" />
     <ProjectReference Include="..\GBCore\GBCore.csproj" />
+    <ProjectReference Include="..\CommandFactory\CommandFactory.csproj" />
   </ItemGroup>
 
   <ItemGroup>
