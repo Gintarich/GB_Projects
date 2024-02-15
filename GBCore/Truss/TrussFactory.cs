@@ -59,9 +59,11 @@ namespace GBCore.Truss
             double bottomChordZValue = midpoint.z - settings.Height;
             // Truss height has to be larger than 500
             if (bottomChordZValue > localSP.z - 500)
+            {
                 bottomChordZValue = localSP.z - 500;
+            }
 
-            double bottomChordSPXValue = forvardSlope.x / 2 + settings.FirstDiagonalOffset;
+            double bottomChordSPXValue = (forvardSlope.x / 2) + settings.FirstDiagonalOffset;
 
             var bottomChordSP = new Vector3d(bottomChordSPXValue,
                 0, bottomChordZValue);

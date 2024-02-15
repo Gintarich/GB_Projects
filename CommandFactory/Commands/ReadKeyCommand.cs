@@ -6,7 +6,7 @@ namespace CommandFactory.Commands
     {
         public void Run()
         {
-            Console.ReadLine();
+            _ = Console.ReadLine();
         }
     }
 }

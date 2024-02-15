@@ -30,9 +30,9 @@ namespace CommandFactory.Commands
                 //sw.Stop();
                 //Console.WriteLine($"Took {sw.ElapsedMilliseconds}ms");
                 //sw.Restart();
-                var topChords = truss.GetTopChords();
-                var bottomChords = truss.GetBottomChords();
-                var diagonals = truss.GetDiagnals();
+                _ = truss.GetTopChords();
+                _ = truss.GetBottomChords();
+                _ = truss.GetDiagnals();
             }
             finally
             {

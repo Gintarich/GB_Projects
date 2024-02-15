@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GBCore
+namespace GBCore.Utils
 {
     public static class MathUtils
     {

@@ -1,4 +1,4 @@
-﻿namespace CommandRunner.Commands
+﻿namespace CommandFactory.Commands
 {
     public class CreatePlateCommand : IGBCommand
     {
