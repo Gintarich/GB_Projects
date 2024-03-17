@@ -9,6 +9,7 @@ namespace CommandFactory.Commands
     {
         public void Run()
         {
+            System.Console.WriteLine("Is this called");
             var sw = Stopwatch.StartNew();
             try
             {
